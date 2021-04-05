@@ -29,6 +29,11 @@
 		9DD1E9E02618E4E100F9A088 /* ProfileColorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1E9DF2618E4E100F9A088 /* ProfileColorTableViewCell.xib */; };
 		9DD1E9E32618E50600F9A088 /* ProfileColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD1E9E22618E50600F9A088 /* ProfileColorTableViewCell.swift */; };
 		9DD1E9E72618E84F00F9A088 /* UITableViewCell+NibName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD1E9E62618E84F00F9A088 /* UITableViewCell+NibName.swift */; };
+		E7761230261B39F000B01466 /* PKHUD in Frameworks */ = {isa = PBXBuildFile; productRef = E776122F261B39F000B01466 /* PKHUD */; };
+		E7761237261B3C8600B01466 /* PlanetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7761236261B3C8600B01466 /* PlanetViewController.swift */; };
+		E776123B261B3EBE00B01466 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E776123A261B3EBE00B01466 /* Alamofire */; };
+		E7761240261B414A00B01466 /* PlanetListRespondsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E776123F261B414A00B01466 /* PlanetListRespondsModel.swift */; };
+		E7761245261B44D000B01466 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7761244261B44D000B01466 /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +60,9 @@
 		9DD1E9DF2618E4E100F9A088 /* ProfileColorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileColorTableViewCell.xib; sourceTree = "<group>"; };
 		9DD1E9E22618E50600F9A088 /* ProfileColorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileColorTableViewCell.swift; sourceTree = "<group>"; };
 		9DD1E9E62618E84F00F9A088 /* UITableViewCell+NibName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+NibName.swift"; sourceTree = "<group>"; };
+		E7761236261B3C8600B01466 /* PlanetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetViewController.swift; sourceTree = "<group>"; };
+		E776123F261B414A00B01466 /* PlanetListRespondsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetListRespondsModel.swift; sourceTree = "<group>"; };
+		E7761244261B44D000B01466 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +70,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E776123B261B3EBE00B01466 /* Alamofire in Frameworks */,
 				9D6B9AAF261776AB00C6E213 /* KeychainSwift in Frameworks */,
+				E7761230261B39F000B01466 /* PKHUD in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +82,7 @@
 		9D6B9A6E261759E100C6E213 = {
 			isa = PBXGroup;
 			children = (
+				E776123D261B402500B01466 /* Models */,
 				9D6B9A79261759E100C6E213 /* imp_homework_on_swift */,
 				9D6B9A78261759E100C6E213 /* Products */,
 			);
@@ -92,10 +103,10 @@
 				9DD1E9C32618DB5300F9A088 /* Row */,
 				9D6B9A7A261759E100C6E213 /* AppDelegate.swift */,
 				9D8BDDDA2618362B00AA3AD2 /* ApplicationConstans.swift */,
-				9D6B9AAA261774D000C6E213 /* AuthorizationServerSimulator.swift */,
 				9D6B9A7C261759E100C6E213 /* SceneDelegate.swift */,
 				9D6B9A9B2617616700C6E213 /* StyledButton.swift */,
 				9DD1E9D52618E20C00F9A088 /* StyledRoundedImage.swift */,
+				E7761236261B3C8600B01466 /* PlanetViewController.swift */,
 				9D6B9A9A2617616500C6E213 /* StyledTextField.swift */,
 				9D6B9A80261759E100C6E213 /* Main.storyboard */,
 				9D6B9A8F26175C4300C6E213 /* LoginViewController.swift */,
@@ -130,6 +141,32 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		E776123D261B402500B01466 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E7761243261B449F00B01466 /* Services */,
+				E776123E261B406D00B01466 /* DTO */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E776123E261B406D00B01466 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				E776123F261B414A00B01466 /* PlanetListRespondsModel.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		E7761243261B449F00B01466 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9D6B9AAA261774D000C6E213 /* AuthorizationServerSimulator.swift */,
+				E7761244261B44D000B01466 /* NetworkService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -148,6 +185,8 @@
 			name = imp_homework_on_swift;
 			packageProductDependencies = (
 				9D6B9AAE261776AB00C6E213 /* KeychainSwift */,
+				E776122F261B39F000B01466 /* PKHUD */,
+				E776123A261B3EBE00B01466 /* Alamofire */,
 			);
 			productName = imp_homework_on_swift;
 			productReference = 9D6B9A77261759E100C6E213 /* imp_homework_on_swift.app */;
@@ -178,6 +217,8 @@
 			mainGroup = 9D6B9A6E261759E100C6E213;
 			packageReferences = (
 				9D6B9AAD261776AB00C6E213 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				E776122E261B39F000B01466 /* XCRemoteSwiftPackageReference "PKHUD" */,
+				E7761239261B3EBE00B01466 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 9D6B9A78261759E100C6E213 /* Products */;
 			projectDirPath = "";
@@ -211,12 +252,15 @@
 			files = (
 				9DD1E9E72618E84F00F9A088 /* UITableViewCell+NibName.swift in Sources */,
 				9DD1E9DC2618E3C400F9A088 /* UserInfoTableViewCell.swift in Sources */,
+				E7761240261B414A00B01466 /* PlanetListRespondsModel.swift in Sources */,
 				9DD1E9D62618E20C00F9A088 /* StyledRoundedImage.swift in Sources */,
+				E7761245261B44D000B01466 /* NetworkService.swift in Sources */,
 				9D8BDDD72618268100AA3AD2 /* AuthorizationServerSimulator.swift in Sources */,
 				9DD1E9D22618DDE300F9A088 /* TopTableViewCell.swift in Sources */,
 				9D8BDDDB2618362B00AA3AD2 /* ApplicationConstans.swift in Sources */,
 				9D6B9A9026175C4300C6E213 /* LoginViewController.swift in Sources */,
 				9D9A2D452619EDA60059AFB6 /* ErrorViewController.swift in Sources */,
+				E7761237261B3C8600B01466 /* PlanetViewController.swift in Sources */,
 				9D6B9A7F261759E100C6E213 /* RegistrationViewController.swift in Sources */,
 				9D8BDDD226178D4500AA3AD2 /* StyledButton.swift in Sources */,
 				9D6B9A7B261759E100C6E213 /* AppDelegate.swift in Sources */,
@@ -433,6 +477,22 @@
 				minimumVersion = 19.0.0;
 			};
 		};
+		E776122E261B39F000B01466 /* XCRemoteSwiftPackageReference "PKHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pkluz/PKHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.0;
+			};
+		};
+		E7761239261B3EBE00B01466 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -440,6 +500,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9D6B9AAD261776AB00C6E213 /* XCRemoteSwiftPackageReference "keychain-swift" */;
 			productName = KeychainSwift;
+		};
+		E776122F261B39F000B01466 /* PKHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E776122E261B39F000B01466 /* XCRemoteSwiftPackageReference "PKHUD" */;
+			productName = PKHUD;
+		};
+		E776123A261B3EBE00B01466 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E7761239261B3EBE00B01466 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
