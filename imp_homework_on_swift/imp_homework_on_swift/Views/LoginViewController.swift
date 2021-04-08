@@ -22,9 +22,6 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let viewController = UIViewController()
-        present(viewController, animated: true, completion: nil)
-        
         loginTextField.delegate = self
         passwordTextField.delegate = self
         
@@ -39,7 +36,10 @@ class LoginViewController: UIViewController {
         let bottomInset = keyboardSize.height
         contentScrollView.contentInset.bottom = bottomInset
         contentScrollView.verticalScrollIndicatorInsets.bottom = bottomInset - view.safeAreaInsets.bottom
+        var insets = contentScrollView.contentInset
+        
         let Ypoint = bottomInset / 2.0 - view.safeAreaInsets.bottom
+      
         contentScrollView.setContentOffset(CGPoint(x: 0, y: Ypoint), animated: true)
     }
     
