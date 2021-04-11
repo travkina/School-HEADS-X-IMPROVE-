@@ -21,6 +21,7 @@
 		9D8BDDDB2618362B00AA3AD2 /* ApplicationConstans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8BDDDA2618362B00AA3AD2 /* ApplicationConstans.swift */; };
 		9D9AE57D261CC55300DBFFC2 /* PlanetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D9AE57C261CC55300DBFFC2 /* PlanetTableViewCell.xib */; };
 		9D9AE580261CD44D00DBFFC2 /* PlanetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9AE57F261CD44D00DBFFC2 /* PlanetTableViewCell.swift */; };
+		9DCF17A4261F6E3E0054E8F5 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCF17A3261F6E3E0054E8F5 /* Planet.swift */; };
 		9DD1E9C12618D9BC00F9A088 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD1E9C02618D9BC00F9A088 /* ProfileViewController.swift */; };
 		9DD1E9CE2618DDC100F9A088 /* TopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1E9CD2618DDC100F9A088 /* TopTableViewCell.xib */; };
 		9DD1E9D22618DDE300F9A088 /* TopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD1E9D12618DDE300F9A088 /* TopTableViewCell.swift */; };
@@ -53,6 +54,7 @@
 		9D8BDDDA2618362B00AA3AD2 /* ApplicationConstans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationConstans.swift; sourceTree = "<group>"; };
 		9D9AE57C261CC55300DBFFC2 /* PlanetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanetTableViewCell.xib; sourceTree = "<group>"; };
 		9D9AE57F261CD44D00DBFFC2 /* PlanetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetTableViewCell.swift; sourceTree = "<group>"; };
+		9DCF17A3261F6E3E0054E8F5 /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		9DD1E9C02618D9BC00F9A088 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		9DD1E9CD2618DDC100F9A088 /* TopTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopTableViewCell.xib; sourceTree = "<group>"; };
 		9DD1E9D12618DDE300F9A088 /* TopTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTableViewCell.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 		9D6B9A79261759E100C6E213 /* imp_homework_on_swift */ = {
 			isa = PBXGroup;
 			children = (
+				E7761243261B449F00B01466 /* Services */,
 				9DFD1817261E08A40064B276 /* Style */,
 				9DFD1816261E08750064B276 /* Views */,
 				E776123D261B402500B01466 /* Models */,
@@ -171,8 +174,8 @@
 		E776123D261B402500B01466 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E7761243261B449F00B01466 /* Services */,
 				E776123E261B406D00B01466 /* DTO */,
+				9DCF17A3261F6E3E0054E8F5 /* Planet.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				9D6B9A7F261759E100C6E213 /* RegistrationViewController.swift in Sources */,
 				9D8BDDD226178D4500AA3AD2 /* StyledButton.swift in Sources */,
 				9D6B9A7B261759E100C6E213 /* AppDelegate.swift in Sources */,
+				9DCF17A4261F6E3E0054E8F5 /* Planet.swift in Sources */,
 				9DD1E9C12618D9BC00F9A088 /* ProfileViewController.swift in Sources */,
 				9DD1E9E32618E50600F9A088 /* ProfileColorTableViewCell.swift in Sources */,
 				9D9AE580261CD44D00DBFFC2 /* PlanetTableViewCell.swift in Sources */,

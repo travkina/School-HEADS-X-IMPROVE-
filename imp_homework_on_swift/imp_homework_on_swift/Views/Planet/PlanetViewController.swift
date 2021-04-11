@@ -7,12 +7,15 @@
 
 import UIKit
 import PKHUD
+import Alamofire
 
 class PlanetViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    var planetListArray = [PlanetListResultRespondsModel]()
     let networkService: PlanetListNetworkService = NetworkService()
+    var PlanetListInfo: PlanetListInfoRespondsModel?
+    var planetListArray = [Planet]()
+    var scroll: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,20 +26,17 @@ class PlanetViewController: UIViewController {
         HUD.registerForKeyboardNotifications()
         HUD.allowsInteraction = false
         HUD.dimsBackground = true
-        loadPlanets()
+        loadPlanets(URL: NetworkConstants.URLString.planetList + "?page=\(1)")
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
-    func loadPlanets() {
+    func loadPlanets(URL: String) {
         HUD.show(.progress)
-        networkService.getPlanetLits(page: 1) { [weak self] (response, error) in
+        networkService.getPlanetLits(URL: URL, method: HTTPMethod.get) { [weak self] (response, error) in
             guard self == self else { return }
             HUD.hide()
             if let response = response {
-                self?.planetListArray = response.results
+                self?.PlanetListInfo = response.info
+                self?.planetListArray += response.results
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
                 }
@@ -60,11 +60,25 @@ extension PlanetViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: PlanetTableViewCell.nibName(), for: indexPath) as? PlanetTableViewCell {
             let planetInfo = self.planetListArray[indexPath.row]
-            cell.LocationLabel.text = planetInfo.name
+            cell.LocationLabel.text = planetInfo.namel
             cell.TypeLocationLabel.text = planetInfo.type
             cell.PopulationLabel.text = planetInfo.residents.count.description
             return cell
         }
         return UITableViewCell()
     }
+  
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let Yposition = scrollView.contentOffset.y
+        
+        if Yposition > (scrollView.contentSize.height - scrollView.frame.size.height)
+       {
+            if let URL = PlanetListInfo?.next {
+                loadPlanets(URL: URL)
+            } else {
+                return
+            }
+        }
+    }
+ 
 }

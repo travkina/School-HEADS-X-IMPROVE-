@@ -7,21 +7,18 @@
 
 import Foundation
 
-struct PlanetListRespondsModel: Decodable {
+struct PlanetListRespondsModel<T: Decodable>: Decodable {
+    private enum CodingKeys: String, CodingKey {
+        case info
+        case results
+    }
+    
     let info: PlanetListInfoRespondsModel
-    let results: [PlanetListResultRespondsModel]
+    let results: [T]
 }
 struct PlanetListInfoRespondsModel: Decodable {
     let count: Int
     let pages: Int
     let next:  String?
     let prev:  String?
-}
-
-struct PlanetListResultRespondsModel: Decodable{
-    let id: Int
-    let name: String?
-    let type: String?
-    let dimension: String?
-    let residents: [String]
 }

@@ -33,21 +33,11 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D70-iT-fQh" userLabel="More Button">
-                        <rect key="frame" x="345" y="39" width="30" height="18"/>
-                        <state key="normal" backgroundImage="greaterthan" catalog="system"/>
-                        <connections>
-                            <action selector="moreButton:" destination="zZZ-45-wH5" eventType="touchUpInside" id="9YF-3E-Bqx"/>
-                        </connections>
-                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="7QS-iC-Sva" secondAttribute="trailing" constant="191" id="23T-4X-Yce"/>
                     <constraint firstItem="Zaw-6N-fk3" firstAttribute="top" secondItem="kS9-Af-3hF" secondAttribute="topMargin" constant="-57" id="44g-ru-27A"/>
                     <constraint firstItem="7QS-iC-Sva" firstAttribute="top" secondItem="kS9-Af-3hF" secondAttribute="top" constant="26" id="9OR-5R-Nqh"/>
-                    <constraint firstItem="D70-iT-fQh" firstAttribute="leading" secondItem="Zaw-6N-fk3" secondAttribute="trailing" constant="21" id="CkV-m1-9ob"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="D70-iT-fQh" secondAttribute="trailing" constant="7" id="F2X-tq-jxP"/>
-                    <constraint firstItem="Zaw-6N-fk3" firstAttribute="centerY" secondItem="D70-iT-fQh" secondAttribute="centerY" id="FGW-Ms-XgT"/>
                     <constraint firstItem="Zaw-6N-fk3" firstAttribute="leading" secondItem="kS9-Af-3hF" secondAttribute="leading" constant="238" id="UR2-y8-hB8"/>
                     <constraint firstAttribute="trailing" secondItem="Zaw-6N-fk3" secondAttribute="trailing" constant="78" id="Vmk-MY-scF"/>
                     <constraint firstItem="jNb-fu-MNN" firstAttribute="top" secondItem="kS9-Af-3hF" secondAttribute="top" constant="55" id="YJL-Gk-qFW"/>
@@ -67,7 +57,4 @@
             <point key="canvasLocation" x="230.43478260869566" y="36.160714285714285"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="greaterthan" catalog="system" width="128" height="111"/>
-    </resources>
 </document>

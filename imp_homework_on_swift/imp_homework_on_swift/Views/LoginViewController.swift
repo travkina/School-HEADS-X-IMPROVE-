@@ -36,24 +36,24 @@ class LoginViewController: UIViewController {
         let bottomInset = keyboardSize.height
         contentScrollView.contentInset.bottom = bottomInset
         contentScrollView.verticalScrollIndicatorInsets.bottom = bottomInset - view.safeAreaInsets.bottom
-        var insets = contentScrollView.contentInset
-        
         let Ypoint = bottomInset / 2.0 - view.safeAreaInsets.bottom
-      
-        contentScrollView.setContentOffset(CGPoint(x: 0, y: Ypoint), animated: true)
+        contentScrollView.setContentOffset(CGPoint(x: 0.0, y: Ypoint), animated: true)
     }
     
-    @IBAction func signInButton(_ sender: Any) {
+    private func signIn() {
         view.endEditing(true)
         
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
         
         guard let login = loginTextField.text,
-        let password = passwordTextField.text
+        let password = passwordTextField.text, login.count > 0, password.count > 0
         else {
-            self.alert(title: "Warning", message: "Надо заполнить все поля")
+            self.alert(title: "Предупреждение", message: "Надо заполнить все поля")
             return
         }
+        
+        //let name = UIDevice.current.name
+       // let user = User(name: name, email: login)
         
         let loginAnswer = AuthorizationMockSimulator().logIn(login: login, password: password)
         if loginAnswer.result == true,
@@ -68,11 +68,16 @@ class LoginViewController: UIViewController {
                 } else {
                     self.alert(title: "Error", message: "no value in keychain")
                 }
-        }  else {
+        }
+        else {
             if let mess = loginAnswer.error {
                 self.alert(title: "Error", message: mess)
             }
         }
+    }
+    
+    @IBAction func signInButton(_ sender: Any) {
+        signIn()
     }
     
     @IBAction func registrationButton(_ sender: Any) {
@@ -108,11 +113,25 @@ class LoginViewController: UIViewController {
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        if textField == loginTextField {
+       /* if textField == loginTextField {
             passwordTextField.becomeFirstResponder()
             return true
         }
         textField.resignFirstResponder()
+        return true
+        */
+        guard let text = textField.text, text.count > 0 else {
+          return false
+        }
+        
+        switch textField {
+        case loginTextField:
+            passwordTextField.becomeFirstResponder()
+        case passwordTextField:
+          signIn()
+        default:
+          return false
+        }
         return true
     }
 }

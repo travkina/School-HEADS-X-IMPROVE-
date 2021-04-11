@@ -11,7 +11,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="imp_homework_on_swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="BYZ-38-t0r" customClass="LoginViewController" customModule="imp_homework_on_swift" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -360,7 +360,7 @@
         <scene sceneID="ZAD-tJ-KIq">
             <objects>
                 <navigationController id="dH2-GI-eEd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" selectedImage="planet" id="7rI-KV-NsA"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="planet" selectedImage="planet" id="7rI-KV-NsA"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5Ky-z8-3x4">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -408,7 +408,7 @@
         <scene sceneID="Fku-fx-gP9">
             <objects>
                 <navigationController id="UrQ-K6-WUa" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" selectedImage="profile" id="Ma5-lg-efg"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="profile" selectedImage="profile" id="Ma5-lg-efg"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MLf-u4-Px5">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -719,47 +719,6 @@
             <point key="canvasLocation" x="96" y="64"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="1gV-FK-U0Q">
-            <size key="intrinsicContentSize" width="67" height="41"/>
-        </designable>
-        <designable name="25i-Tn-AlC">
-            <size key="intrinsicContentSize" width="148" height="29"/>
-        </designable>
-        <designable name="3Jm-pU-mPb">
-            <size key="intrinsicContentSize" width="247.5" height="29"/>
-        </designable>
-        <designable name="ASG-8X-aU4">
-            <size key="intrinsicContentSize" width="208.5" height="30.5"/>
-        </designable>
-        <designable name="Fzw-Nw-7iv">
-            <size key="intrinsicContentSize" width="222" height="29"/>
-        </designable>
-        <designable name="Hl3-7Q-7xm">
-            <size key="intrinsicContentSize" width="69" height="41"/>
-        </designable>
-        <designable name="LBi-dm-hKu">
-            <size key="intrinsicContentSize" width="140" height="41"/>
-        </designable>
-        <designable name="QgS-jd-cRa">
-            <size key="intrinsicContentSize" width="140" height="41"/>
-        </designable>
-        <designable name="br3-YM-W8e">
-            <size key="intrinsicContentSize" width="73" height="41"/>
-        </designable>
-        <designable name="dbt-9A-ER5">
-            <size key="intrinsicContentSize" width="148" height="29"/>
-        </designable>
-        <designable name="fAq-5W-eAZ">
-            <size key="intrinsicContentSize" width="67" height="41"/>
-        </designable>
-        <designable name="l9W-82-gJo">
-            <size key="intrinsicContentSize" width="105.5" height="30.5"/>
-        </designable>
-        <designable name="oQE-6d-Rfr">
-            <size key="intrinsicContentSize" width="105.5" height="30.5"/>
-        </designable>
-    </designables>
     <resources>
         <image name="avatar" width="219" height="219"/>
         <image name="planet" width="30" height="30"/>
