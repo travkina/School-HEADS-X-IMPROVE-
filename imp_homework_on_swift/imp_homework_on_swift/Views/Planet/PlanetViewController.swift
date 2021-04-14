@@ -13,7 +13,7 @@ class PlanetViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     let networkService: PlanetListNetworkService = NetworkService()
-    var PlanetListInfo: PlanetListInfoRespondsModel?
+    var planetListInfo: PlanetListInfoRespondsModel?
     var planetListArray = [Planet]()
     var scroll: Bool = false
     
@@ -31,11 +31,11 @@ class PlanetViewController: UIViewController {
     
     func loadPlanets(URL: String) {
         HUD.show(.progress)
-        networkService.getPlanetLits(URL: URL, method: HTTPMethod.get) { [weak self] (response, error) in
+        networkService.getPlanetLits(URL: URL) { [weak self] (response, error) in
             guard self == self else { return }
             HUD.hide()
             if let response = response {
-                self?.PlanetListInfo = response.info
+                self?.planetListInfo = response.info
                 self?.planetListArray += response.results
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
@@ -73,12 +73,11 @@ extension PlanetViewController: UITableViewDelegate, UITableViewDataSource {
         
         if Yposition > (scrollView.contentSize.height - scrollView.frame.size.height)
        {
-            if let URL = PlanetListInfo?.next {
+            if let URL = planetListInfo?.next {
                 loadPlanets(URL: URL)
             } else {
                 return
             }
         }
     }
- 
 }

@@ -30,14 +30,14 @@ class LoginViewController: UIViewController {
     }
     
     @objc func keyboardWillShow(_ sender: Notification) {
-        guard let keyboardSize = (sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-                return
+        if let durationAppearKeyboard = sender.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
+                  print("durationAppearKeyboard = \(durationAppearKeyboard)")
+              }
+        
+        if let keyboardSize = (sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let bottomInset = keyboardSize.height
+            contentScrollView.contentInset.bottom = bottomInset
         }
-        let bottomInset = keyboardSize.height
-        contentScrollView.contentInset.bottom = bottomInset
-        contentScrollView.verticalScrollIndicatorInsets.bottom = bottomInset - view.safeAreaInsets.bottom
-        let Ypoint = bottomInset / 2.0 - view.safeAreaInsets.bottom
-        contentScrollView.setContentOffset(CGPoint(x: 0.0, y: Ypoint), animated: true)
     }
     
     private func signIn() {
@@ -51,9 +51,6 @@ class LoginViewController: UIViewController {
             self.alert(title: "Предупреждение", message: "Надо заполнить все поля")
             return
         }
-        
-        //let name = UIDevice.current.name
-       // let user = User(name: name, email: login)
         
         let loginAnswer = AuthorizationMockSimulator().logIn(login: login, password: password)
         if loginAnswer.result == true,
@@ -70,8 +67,8 @@ class LoginViewController: UIViewController {
                 }
         }
         else {
-            if let mess = loginAnswer.error {
-                self.alert(title: "Error", message: mess)
+            if let message = loginAnswer.error {
+                self.alert(title: "Error", message: message)
             }
         }
     }
@@ -112,18 +109,6 @@ class LoginViewController: UIViewController {
 }
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-       /* if textField == loginTextField {
-            passwordTextField.becomeFirstResponder()
-            return true
-        }
-        textField.resignFirstResponder()
-        return true
-        */
-        guard let text = textField.text, text.count > 0 else {
-          return false
-        }
-        
         switch textField {
         case loginTextField:
             passwordTextField.becomeFirstResponder()
