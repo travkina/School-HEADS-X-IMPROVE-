@@ -48,13 +48,15 @@ class RegistrationViewController: UIViewController {
             view.endEditing(true)
     }
     
-    @IBAction func RegistrationButton(_ sender: Any) {
+    private func registration () {
+        view.endEditing(true)
+        
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
         guard let login = loginTextField.text,
            let password = passwordTextField.text,
-           let textconfirmPassword = confirmPasswordTextField.text
+           let textconfirmPassword = confirmPasswordTextField.text, login.count > 0, password.count > 0, textconfirmPassword.count > 0
         else {
-            self.alert(title: "Warning", message: "Надо заполнить все поля")
+            self.alert(title: "Предупреждение", message: "Надо заполнить все поля")
             return
         }
         let registrationAnswer = AuthorizationMockSimulator().registerUser(login: login, password: password)
@@ -67,13 +69,17 @@ class RegistrationViewController: UIViewController {
                     navigationController?.pushViewController(destinationViewController, animated: true)
                 }
             } else {
-                self.alert(title: "Error", message: "no value in keychain")
+                self.alert(title: "Ошибка", message: "Проблемы при регистрации")
             }
         }  else {
             if let mess = registrationAnswer.error {
-                self.alert(title: "Error", message: mess)
+                self.alert(title: "Ошибка", message: mess)
             }
         }
+    }
+    
+    @IBAction func RegistrationButton(_ sender: Any) {
+        registration()
     }
     
     func alert(title: String, message: String) {
@@ -96,8 +102,10 @@ extension RegistrationViewController: UITextFieldDelegate {
                 passwordTextField.becomeFirstResponder()
             case passwordTextField:
                 confirmPasswordTextField.becomeFirstResponder()
+            case confirmPasswordTextField:
+                registration()
             default:
-                confirmPasswordTextField.resignFirstResponder()
+                return false
         }
         return true
     }

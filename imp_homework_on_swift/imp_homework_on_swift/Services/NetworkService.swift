@@ -13,26 +13,27 @@ struct NetworkConstants {
         static let planetList = "https://rickandmortyapi.com/api/location"
     }
 }
-
 protocol PlanetListNetworkService {
-    func getPlanetLits(page: Int, onRequestComleted: @escaping ((PlanetListRespondsModel?, Error?)->()))
+    func getPlanetLits(URL: String, method: HTTPMethod, onRequestComleted: @escaping ((PlanetListRespondsModel<Planet>?, Error?)->()))
 }
 
 class NetworkService : PlanetListNetworkService {
     
-    func getPlanetLits(page: Int,
-                       onRequestComleted: @escaping ((PlanetListRespondsModel?, Error?) -> ())) {
-        performGetRequest(urlString: NetworkConstants.URLString.planetList + "?page=\(page)",
+    func getPlanetLits(URL: String,
+                       method: HTTPMethod,
+                       onRequestComleted: @escaping ((PlanetListRespondsModel<Planet>?, Error?) -> ())) {
+        
+        performRequest(urlString: URL,
+                          method: method,
                           onRequestComleted: onRequestComleted)
     }
 
-    private func performGetRequest<ResponseModel: Decodable>(urlString: String,
-                                                             method: HTTPMethod = .get,
+    private func performRequest<ResponseModel: Decodable>(urlString: String,
+                                                             method: HTTPMethod,
                                                              onRequestComleted: @escaping ((ResponseModel?, Error?)->())) {
         AF.request(urlString,
                    method: method,
-                   encoding: JSONEncoding.default)
-            .response {(responseData) in
+                   encoding: JSONEncoding.default).response {(responseData) in
                     guard responseData.error == nil,
                           let data = responseData.data
                     else {

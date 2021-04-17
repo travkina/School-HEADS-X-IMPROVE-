@@ -7,7 +7,7 @@
 
 import UIKit
 
-@IBDesignable
+//@IBDesignable
 class StyledTextField: UITextField {
     
     @IBInspectable var insetX: CGFloat = 0.0 {
