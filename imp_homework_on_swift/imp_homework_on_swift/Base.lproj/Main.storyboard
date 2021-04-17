@@ -85,7 +85,7 @@
                                                                     <constraint firstAttribute="height" constant="70" id="62T-WX-Hqi"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                                         <real key="value" value="1"/>
@@ -116,7 +116,7 @@
                                                                     <constraint firstAttribute="height" constant="70" id="d0p-mn-ERs"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                                         <real key="value" value="1"/>
