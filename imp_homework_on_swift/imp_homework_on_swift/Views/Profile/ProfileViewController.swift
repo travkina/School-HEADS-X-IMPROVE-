@@ -13,9 +13,9 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var colorProfile: UIColor = .blue
-    var UserLogin: String = "Логин пользователя"
-    var UserAvatar: String = "avatar"
-    var UserRegistrationDate: Date = Date()
+    var userLogin: String = "Логин пользователя"
+    var userAvatar: String = "avatar"
+    var userRegistrationDate: Date = Date()
     let keychain = KeychainSwift()
     
     override func viewDidLoad() {
@@ -34,26 +34,12 @@ class ProfileViewController: UIViewController {
                         green: CGFloat(greenColor),
                         blue: CGFloat(blueColor), alpha: 1)
                 }
-                UserLogin = userInfo.login
-                UserAvatar = userInfo.photo ?? "avatar"
-                UserRegistrationDate = userInfo.registrationDate
-                /*
-                 guard let profileInfo = Profile(login: userInfo.login, profilePhotoName: (userInfo.photo ?? "avatar"), dateRegistration: userInfo.registrationDate, profileColor: colorProfile)
-                
-                else {
-                    print("login: \(userInfo.login)")
-                    print("profilePhotoName \(userInfo.photo ?? "avatar")")
-                    print("date reg \(userInfo.registrationDate)")
-                    
-                    fatalError("Unable to instantiate profileInfo")
-                }
-                
-                profileInformation.append(profileInfo)
-            */
-                
+                userLogin = userInfo.login
+                userAvatar = userInfo.photo ?? "avatar"
+                userRegistrationDate = userInfo.registrationDate
             } else {
-                if let mess = profile?.error {
-                    self.alert(title: "Ошибка", message: mess)
+                if let message = profile?.error {
+                    self.alert(title: "Ошибка", message: message)
                 }
             }
         } else {
@@ -72,7 +58,6 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func ExitButton(_ sender: Any) {
-        //keychain.clear()
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
         if let loginViewController = mainStoryBoard.instantiateViewController(identifier: "LoginVC") as? LoginViewController {
             navigationController?.pushViewController(loginViewController, animated: true)
@@ -105,29 +90,20 @@ extension ProfileViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let profile = profileInformation[1]
-        
         if indexPath.section == 0,
            let cell = tableView.dequeueReusableCell(withIdentifier: TopTableViewCell.nibName(), for: indexPath) as? TopTableViewCell {
-            
-            cell.UserLoginLabel.text = UserLogin
-            cell.TopImageView.image = UIImage(named: UserAvatar)
-            cell.avatarImage.image = UIImage(named: UserAvatar)
-            /*
-            cell.UserLoginLabel.text = profile.login
-            cell.TopImageView.image = UIImage(named: profile.profilePhotoName ?? "avatar")
-            cell.avatarImage.image = UIImage(named: profile.profilePhotoName ?? "avatar")
-             */
-            return cell
+                cell.UserLoginLabel.text = userLogin
+                cell.TopImageView.image = UIImage(named: userAvatar)
+                cell.avatarImage.image = UIImage(named: userAvatar)
+                return cell
         }
         if indexPath.section == 1,
            let cell = tableView.dequeueReusableCell(withIdentifier: UserInfoTableViewCell.nibName(), for: indexPath) as? UserInfoTableViewCell {
-            cell.InfoValueLable.text = UserRegistrationDate.description
-            //profile.dateRegistration.description
+            cell.InfoValueLable.text = userRegistrationDate.description
             return cell
         }
         if let cell = tableView.dequeueReusableCell(withIdentifier: ProfileColorTableViewCell.nibName(), for: indexPath) as? ProfileColorTableViewCell {
-            cell.ColorProfileView.backgroundColor = colorProfile//profile.profileColor
+            cell.ColorProfileView.backgroundColor = colorProfile
             return cell
         }
         return UITableViewCell()

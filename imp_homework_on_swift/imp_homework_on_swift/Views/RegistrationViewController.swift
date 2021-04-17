@@ -33,9 +33,6 @@ class RegistrationViewController: UIViewController {
         }
         let bottomInset = keyboardSize.height
         contentScrollView.contentInset.bottom = bottomInset
-        contentScrollView.verticalScrollIndicatorInsets.bottom = bottomInset - view.safeAreaInsets.bottom
-        let Ypoint = bottomInset / 2.0 - view.safeAreaInsets.bottom
-        contentScrollView.setContentOffset(CGPoint(x: 0.0, y: Ypoint), animated: true)
     }
     
     @objc func keyboardWillHide(_ sender: Notification) {
@@ -56,7 +53,7 @@ class RegistrationViewController: UIViewController {
            let password = passwordTextField.text,
            let textconfirmPassword = confirmPasswordTextField.text, login.count > 0, password.count > 0, textconfirmPassword.count > 0
         else {
-            self.alert(title: "Предупреждение", message: "Надо заполнить все поля")
+            alert(title: "Предупреждение", message: "Надо заполнить все поля")
             return
         }
         let registrationAnswer = AuthorizationMockSimulator().registerUser(login: login, password: password)
@@ -64,16 +61,15 @@ class RegistrationViewController: UIViewController {
            let registrationToken = registrationAnswer.token {
            keychain.set(registrationToken, forKey: ApplicationConstans.keychainTokenKey)
             if let value = keychain.get(ApplicationConstans.keychainTokenKey) {
-                print("In Keychain: \(value)")
                 if let destinationViewController = mainStoryBoard.instantiateViewController(identifier: "ProfileTabBarController") as? UITabBarController {
                     navigationController?.pushViewController(destinationViewController, animated: true)
                 }
             } else {
-                self.alert(title: "Ошибка", message: "Проблемы при регистрации")
+                alert(title: "Ошибка", message: "Проблемы при регистрации")
             }
         }  else {
-            if let mess = registrationAnswer.error {
-                self.alert(title: "Ошибка", message: mess)
+            if let message = registrationAnswer.error {
+                alert(title: "Ошибка", message: message)
             }
         }
     }
