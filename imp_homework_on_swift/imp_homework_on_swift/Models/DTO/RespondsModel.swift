@@ -1,5 +1,5 @@
 //
-//  PlanetListRespondsModel.swift
+//  RespondsModel.swift
 //  imp_homework_on_swift
 //
 //  Created by Студент 1 on 05.04.2021.
@@ -7,16 +7,16 @@
 
 import Foundation
 
-struct PlanetListRespondsModel<T: Decodable>: Decodable {
+struct RespondsModel: Codable {
     private enum CodingKeys: String, CodingKey {
         case info
         case results
     }
     
-    let info: PlanetListInfoRespondsModel
-    let results: [T]
+    let info: InfoRespondsModel
+    let results: [Planet]
 }
-struct PlanetListInfoRespondsModel: Decodable {
+struct InfoRespondsModel: Codable {
     let count: Int
     let pages: Int
     let next:  String?

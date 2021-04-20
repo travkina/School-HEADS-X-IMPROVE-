@@ -12,8 +12,8 @@ import Alamofire
 class PlanetViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    let networkService: PlanetListNetworkService = NetworkService()
-    var planetListInfo: PlanetListInfoRespondsModel?
+    let networkService: ListNetworkService = NetworkService()
+    var planetListInfo: InfoRespondsModel?
     var planetListArray = [Planet]()
     var scroll: Bool = false
     
@@ -60,7 +60,7 @@ extension PlanetViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: PlanetTableViewCell.nibName(), for: indexPath) as? PlanetTableViewCell {
             let planetInfo = self.planetListArray[indexPath.row]
-            cell.LocationLabel.text = planetInfo.namel
+            cell.LocationLabel.text = planetInfo.name
             cell.TypeLocationLabel.text = planetInfo.type
             cell.PopulationLabel.text = planetInfo.residents.count.description
             return cell
@@ -68,13 +68,24 @@ extension PlanetViewController: UITableViewDelegate, UITableViewDataSource {
         return UITableViewCell()
     }
   
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       
+         let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+         if let characterViewController = mainStoryBoard.instantiateViewController(identifier: "CharacterVC") as? CharacterViewController {
+            let planetInfo = self.planetListArray[indexPath.row]
+            characterViewController.characterList = planetInfo.residents
+            characterViewController.planetName = planetInfo.name
+            characterViewController.residentsCount = planetInfo.residents.count
+            navigationController?.pushViewController(characterViewController, animated: true)
+         }
+    }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let Yposition = scrollView.contentOffset.y
+        let yposition = scrollView.contentOffset.y
         
-        if Yposition > (scrollView.contentSize.height - scrollView.frame.size.height)
+        if yposition > (scrollView.contentSize.height - scrollView.frame.size.height)
        {
-            if let URL = planetListInfo?.next {
-                loadPlanets(URL: URL)
+            if let url = planetListInfo?.next {
+                loadPlanets(URL: url)
             } else {
                 return
             }

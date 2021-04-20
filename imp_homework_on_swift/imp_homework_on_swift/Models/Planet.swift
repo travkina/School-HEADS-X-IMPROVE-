@@ -7,17 +7,15 @@
 
 import Foundation
 
-struct Planet: Decodable {
-    
-    var idl: Int
-    var namel: String
+struct Planet: Codable {
+
+    var name: String
     var type: String
     var dimension: String
     var residents: [String]
 
     enum CodingKeys: String, CodingKey {
-        case idl = "id"
-        case namel = "name"
+        case name = "name"
         case type
         case dimension
         case residents
@@ -26,12 +24,11 @@ struct Planet: Decodable {
     init(from decoder: Decoder) throws {
         
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        idl = try container.decode(Int.self, forKey: .idl)
-        namel = try container.decode(String.self, forKey: .namel)
+
+        name = try container.decode(String.self, forKey: .name)
         type = try container.decode(String.self, forKey: .type)
         dimension = try container.decode(String.self, forKey: .dimension)
         residents = try container.decode([String].self, forKey: .residents)
     }
-}
 
+}
