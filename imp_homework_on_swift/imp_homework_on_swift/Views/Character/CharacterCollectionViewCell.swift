@@ -20,6 +20,8 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         nameLabel.font = UIFont(name: "Roboto-Regular", size: 15)
         genderLabel.font = UIFont(name: "Roboto-Regular", size: 12)
         
+        characterImage.contentMode = .scaleAspectFit
+        characterImage.image = UIImage(named: "avatar")
         self.backgroundColor = UIColor(red: 0.769, green: 0.769, blue: 0.769, alpha: 1)
         self.layer.cornerRadius = 15
         self.layer.borderWidth = 1

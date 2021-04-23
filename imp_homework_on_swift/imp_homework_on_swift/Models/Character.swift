@@ -4,31 +4,25 @@
 //
 //  Created by Татьяна  Травкина on 17.04.2021.
 //
-
+import UIKit
 import Foundation
 
 struct Character: Codable {
+    
     var name: String
     var gender: String
     var image: String
     var url: String
-
-    enum CodingKeys: String, CodingKey {
-        case name
-        case gender
-        case image
-        case url
-    }
-    
-    init(from decoder: Decoder) throws {
-        
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        name = try container.decode(String.self, forKey: .name)
-        gender = try container.decode(String.self, forKey: .gender)
-        image = try container.decode(String.self, forKey: .image)
-        url = try container.decode(String.self, forKey: .url)
-    }
-
 }
- 
+
+struct CharacterInfo: Codable {
+    var name: String
+    var gender: String
+    var picture: Data?
+    
+    init(name: String, gender: String, picture: UIImage) {
+        self.name = name
+        self.gender = gender
+        self.picture = picture.pngData()
+    }
+}

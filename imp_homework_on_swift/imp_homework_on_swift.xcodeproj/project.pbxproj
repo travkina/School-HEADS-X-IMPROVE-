@@ -22,7 +22,6 @@
 		9D9AE57D261CC55300DBFFC2 /* PlanetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D9AE57C261CC55300DBFFC2 /* PlanetTableViewCell.xib */; };
 		9D9AE580261CD44D00DBFFC2 /* PlanetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9AE57F261CD44D00DBFFC2 /* PlanetTableViewCell.swift */; };
 		9DB02DC5262AF7FE00B73766 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB02DC4262AF7FE00B73766 /* Character.swift */; };
-		9DB02DC8262AF8C400B73766 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB02DC7262AF8C400B73766 /* UIImageView+.swift */; };
 		9DB02DCC262AF97A00B73766 /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB02DCB262AF97A00B73766 /* CharacterViewController.swift */; };
 		9DB02DD3262AF9BE00B73766 /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB02DD2262AF9BE00B73766 /* CharacterCollectionViewCell.swift */; };
 		9DB02DDF262B329800B73766 /* UICollectionViewCell+NibName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB02DDE262B329800B73766 /* UICollectionViewCell+NibName.swift */; };
@@ -60,7 +59,6 @@
 		9D9AE57C261CC55300DBFFC2 /* PlanetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanetTableViewCell.xib; sourceTree = "<group>"; };
 		9D9AE57F261CD44D00DBFFC2 /* PlanetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetTableViewCell.swift; sourceTree = "<group>"; };
 		9DB02DC4262AF7FE00B73766 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
-		9DB02DC7262AF8C400B73766 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		9DB02DCB262AF97A00B73766 /* CharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewController.swift; sourceTree = "<group>"; };
 		9DB02DD2262AF9BE00B73766 /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
 		9DB02DDE262B329800B73766 /* UICollectionViewCell+NibName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+NibName.swift"; sourceTree = "<group>"; };
@@ -165,7 +163,6 @@
 			isa = PBXGroup;
 			children = (
 				9DD1E9E62618E84F00F9A088 /* UITableViewCell+NibName.swift */,
-				9DB02DC7262AF8C400B73766 /* UIImageView+.swift */,
 				9DB02DDE262B329800B73766 /* UICollectionViewCell+NibName.swift */,
 			);
 			path = Extensions;
@@ -316,7 +313,6 @@
 				9DB02DC5262AF7FE00B73766 /* Character.swift in Sources */,
 				9D8BDDDB2618362B00AA3AD2 /* ApplicationConstans.swift in Sources */,
 				9DB02DDF262B329800B73766 /* UICollectionViewCell+NibName.swift in Sources */,
-				9DB02DC8262AF8C400B73766 /* UIImageView+.swift in Sources */,
 				9D6B9A9026175C4300C6E213 /* LoginViewController.swift in Sources */,
 				E7761237261B3C8600B01466 /* PlanetViewController.swift in Sources */,
 				9D6B9A7F261759E100C6E213 /* RegistrationViewController.swift in Sources */,

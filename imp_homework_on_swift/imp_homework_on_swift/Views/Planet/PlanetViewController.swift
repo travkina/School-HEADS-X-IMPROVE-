@@ -31,14 +31,16 @@ class PlanetViewController: UIViewController {
     
     func loadPlanets(URL: String) {
         HUD.show(.progress)
-        networkService.getPlanetLits(URL: URL) { [weak self] (response, error) in
-            guard self == self else { return }
-            HUD.hide()
-            if let response = response {
-                self?.planetListInfo = response.info
-                self?.planetListArray += response.results
-                DispatchQueue.main.async {
-                    self?.tableView.reloadData()
+        DispatchQueue.global().async {
+            self.networkService.getPlanetLits(URL: URL) { [weak self] (response, error) in
+                guard self == self else { return }
+                HUD.hide()
+                if let response = response {
+                    self?.planetListInfo = response.info
+                    self?.planetListArray += response.results
+                    DispatchQueue.main.async {
+                        self?.tableView.reloadData()
+                    }
                 }
             }
         }
