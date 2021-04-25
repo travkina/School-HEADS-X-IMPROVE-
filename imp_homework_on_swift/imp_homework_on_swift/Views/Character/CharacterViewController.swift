@@ -4,11 +4,17 @@
 //
 //  Created by Татьяна  Травкина on 17.04.2021.
 //
+
 import Foundation
 import UIKit
 import Alamofire
 
-var characterDictionary = Dictionary<String, CharacterInfo>(minimumCapacity: 671)
+class TemporaryData {
+    
+    static let shared = TemporaryData()
+    
+    var characterDictionary = Dictionary<String, CharacterInfo>(minimumCapacity: 671)
+}
 
 class CharacterViewController: UIViewController {
     private let reuseIdentifier = "CharacterCell"
@@ -30,62 +36,33 @@ class CharacterViewController: UIViewController {
         characterCollectionView.collectionViewLayout = createLayout()
         characterCollectionView.register(CharacterCollectionViewCell.self, forCellWithReuseIdentifier: CharacterCollectionViewCell.nibName())
         characterCollectionView.dataSource = self
-        self.loadCharacters(URLS: self.characterList)
-    }
-
-   override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        if characterDictionary.isEmpty {
-            characterDictionary = Dictionary(uniqueKeysWithValues: zip(self.characterList, self.characterSequence))
-        } else {
-            self.characterDict = Dictionary(uniqueKeysWithValues: zip(self.characterList, self.characterSequence))
-            characterDictionary.merge(self.characterDict) {(current, _) in current}
-        }
-        DispatchQueue.main.async {
-            self.characterCollectionView.reloadData()
-        }
     }
     
     func getCharacter(URL:String, onRequestComleted: @escaping ((Character?, Error?) -> ())) {
         self.networkService.getByUrl(urlString: URL, onRequestComleted: onRequestComleted)
     }
     
-    func loadCharacters(URLS: [String]) {
-        DispatchQueue.global().async {
-            for URL in URLS {
-                if !characterDictionary.keys.contains(URL) {
-                    self.getCharacter(URL: URL) { [weak self] (response, error) in
-                        guard self == self else {return}
-                        if let response = response {
-                            self?.characterListArray.append(response)
-                            self?.networkService.getCharacterImage(url: response.image) { [weak self] (responseData, error) in
-                                guard self == self else { return }
-                                if let responseData = responseData {
-                                    let characterInformation = CharacterInfo(name: response.name, gender: response.gender, picture: responseData)
-                                    self?.characterSequence.append(characterInformation)
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    func loadCharacter(URL: String) {
+    func loadCharacter(URL: String, indexPathRow: Int) {
        DispatchQueue.global().async {
             self.getCharacter(URL: URL) { [weak self] (response, error) in
                 guard self == self else {return}
                 if let response = response {
-                    var characterInformation = CharacterInfo(name: response.name, gender: response.gender)
-                    characterDictionary[URL] = characterInformation
+                    DispatchQueue.main.async {
+                        let characterInformation = CharacterInfo(name: response.name, gender: response.gender)
+                        TemporaryData.shared.characterDictionary[URL] = characterInformation
+                        self?.characterCollectionView.reloadItems(at: [IndexPath(row: indexPathRow, section: 0)])
+                    }
                     self?.networkService.getCharacterImage(url: response.image) { [weak self] (responseData, error) in
                         guard self == self else { return }
                         if let responseData = responseData {
-                            characterInformation.picture = responseData
-                            characterInformation.miniPicture = self?.resizedImage(image: responseData, for: CGSize(width: 120, height: 120)) ?? UIImage(named: "ph")!
-                            self?.characterSequence.append(characterInformation)
-                            characterDictionary[URL] = characterInformation
+                            DispatchQueue.main.async {
+                                var characterInformation = TemporaryData.shared.characterDictionary[URL]
+                                characterInformation?.picture = responseData
+                                characterInformation?.miniPicture = self?.resizedImage(image: responseData, for: CGSize(width: 120, height: 120)) ?? UIImage()
+                                TemporaryData.shared.characterDictionary[URL] = characterInformation
+                                self?.characterCollectionView.reloadItems(at: [IndexPath(row: indexPathRow, section: 0)])
+                            }
+                            
                         }
                     }
                 }
@@ -119,9 +96,6 @@ class CharacterViewController: UIViewController {
 }
 
 extension CharacterViewController: UICollectionViewDataSource {
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
-    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.characterList.count
@@ -130,37 +104,24 @@ extension CharacterViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CharacterCollectionViewCell {
             let url = self.characterList[indexPath.row]
+            cell.id = url
+
             cell.activityIndicator.startAnimating()
             cell.activityIndicator.hidesWhenStopped = true
 
-            if !characterDictionary.keys.contains(url) {
-                loadCharacter(URL: url)
-                DispatchQueue.main.async {
-                    if let characterData = characterDictionary[url] {
-                        
-                        cell.nameLabel.text = characterData.name
-                        cell.genderLabel.text = characterData.gender
-                        cell.activityIndicator.stopAnimating()
-                    }
-                }
-                DispatchQueue.main.async {
-                   if let characterData = characterDictionary[url] {
-                        
-                        cell.characterImage.image = characterData.picture
-                        cell.activityIndicator.stopAnimating()
-                    }
-                }
-                
+            if !TemporaryData.shared.characterDictionary.keys.contains(url) {
+                loadCharacter(URL: url, indexPathRow: indexPath.row)
             } else {
-                guard let characterData = characterDictionary[url] else {return cell}
+                guard let characterData = TemporaryData.shared.characterDictionary[url] else {return cell}
+                if cell.id == url {
                     cell.activityIndicator.stopAnimating()
                     cell.nameLabel.text = characterData.name
                     cell.genderLabel.text = characterData.gender
-                    cell.characterImage.image = characterData.picture
+                    cell.characterImage.image = characterData.miniPicture
+                 }
             }
             
             return cell
-            
         }
         return UICollectionViewCell()
     }
