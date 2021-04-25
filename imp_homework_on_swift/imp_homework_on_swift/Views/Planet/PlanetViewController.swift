@@ -81,6 +81,7 @@ extension PlanetViewController: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(characterViewController, animated: true)
          }
     }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let yposition = scrollView.contentOffset.y
         

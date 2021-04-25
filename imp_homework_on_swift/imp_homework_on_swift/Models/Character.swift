@@ -15,14 +15,9 @@ struct Character: Codable {
     var url: String
 }
 
-struct CharacterInfo: Codable {
+struct CharacterInfo {
     var name: String
     var gender: String
-    var picture: Data?
-    
-    init(name: String, gender: String, picture: UIImage) {
-        self.name = name
-        self.gender = gender
-        self.picture = picture.pngData()
-    }
+    var picture = UIImage()
+    var miniPicture = UIImage()
 }
