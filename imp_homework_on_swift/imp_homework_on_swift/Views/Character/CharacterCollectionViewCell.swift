@@ -13,8 +13,6 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var genderLabel: UILabel!
     @IBOutlet weak var characterImage: UIImageView!
     
-    var id = String()
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         nameLabel.textColor = .black

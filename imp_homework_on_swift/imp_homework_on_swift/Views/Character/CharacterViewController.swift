@@ -104,8 +104,6 @@ extension CharacterViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CharacterCollectionViewCell {
             let url = self.characterList[indexPath.row]
-            cell.id = url
-
             cell.activityIndicator.startAnimating()
             cell.activityIndicator.hidesWhenStopped = true
 
@@ -113,14 +111,11 @@ extension CharacterViewController: UICollectionViewDataSource {
                 loadCharacter(URL: url, indexPathRow: indexPath.row)
             } else {
                 guard let characterData = TemporaryData.shared.characterDictionary[url] else {return cell}
-                if cell.id == url {
-                    cell.activityIndicator.stopAnimating()
-                    cell.nameLabel.text = characterData.name
-                    cell.genderLabel.text = characterData.gender
-                    cell.characterImage.image = characterData.miniPicture
-                 }
+                cell.activityIndicator.stopAnimating()
+                cell.nameLabel.text = characterData.name
+                cell.genderLabel.text = characterData.gender
+                cell.characterImage.image = characterData.miniPicture
             }
-            
             return cell
         }
         return UICollectionViewCell()
