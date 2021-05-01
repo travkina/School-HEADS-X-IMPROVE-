@@ -21,6 +21,10 @@
 		9D8BDDDB2618362B00AA3AD2 /* ApplicationConstans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8BDDDA2618362B00AA3AD2 /* ApplicationConstans.swift */; };
 		9D9AE57D261CC55300DBFFC2 /* PlanetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D9AE57C261CC55300DBFFC2 /* PlanetTableViewCell.xib */; };
 		9D9AE580261CD44D00DBFFC2 /* PlanetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9AE57F261CD44D00DBFFC2 /* PlanetTableViewCell.swift */; };
+		9DB02DC5262AF7FE00B73766 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB02DC4262AF7FE00B73766 /* Character.swift */; };
+		9DB02DCC262AF97A00B73766 /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB02DCB262AF97A00B73766 /* CharacterViewController.swift */; };
+		9DB02DD3262AF9BE00B73766 /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB02DD2262AF9BE00B73766 /* CharacterCollectionViewCell.swift */; };
+		9DB02DDF262B329800B73766 /* UICollectionViewCell+NibName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB02DDE262B329800B73766 /* UICollectionViewCell+NibName.swift */; };
 		9DCF17A4261F6E3E0054E8F5 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCF17A3261F6E3E0054E8F5 /* Planet.swift */; };
 		9DD1E9C12618D9BC00F9A088 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD1E9C02618D9BC00F9A088 /* ProfileViewController.swift */; };
 		9DD1E9CE2618DDC100F9A088 /* TopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1E9CD2618DDC100F9A088 /* TopTableViewCell.xib */; };
@@ -34,7 +38,7 @@
 		E7761230261B39F000B01466 /* PKHUD in Frameworks */ = {isa = PBXBuildFile; productRef = E776122F261B39F000B01466 /* PKHUD */; };
 		E7761237261B3C8600B01466 /* PlanetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7761236261B3C8600B01466 /* PlanetViewController.swift */; };
 		E776123B261B3EBE00B01466 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E776123A261B3EBE00B01466 /* Alamofire */; };
-		E7761240261B414A00B01466 /* PlanetListRespondsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E776123F261B414A00B01466 /* PlanetListRespondsModel.swift */; };
+		E7761240261B414A00B01466 /* RespondsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E776123F261B414A00B01466 /* RespondsModel.swift */; };
 		E7761245261B44D000B01466 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7761244261B44D000B01466 /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +58,10 @@
 		9D8BDDDA2618362B00AA3AD2 /* ApplicationConstans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationConstans.swift; sourceTree = "<group>"; };
 		9D9AE57C261CC55300DBFFC2 /* PlanetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanetTableViewCell.xib; sourceTree = "<group>"; };
 		9D9AE57F261CD44D00DBFFC2 /* PlanetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetTableViewCell.swift; sourceTree = "<group>"; };
+		9DB02DC4262AF7FE00B73766 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		9DB02DCB262AF97A00B73766 /* CharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewController.swift; sourceTree = "<group>"; };
+		9DB02DD2262AF9BE00B73766 /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
+		9DB02DDE262B329800B73766 /* UICollectionViewCell+NibName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+NibName.swift"; sourceTree = "<group>"; };
 		9DCF17A3261F6E3E0054E8F5 /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		9DD1E9C02618D9BC00F9A088 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		9DD1E9CD2618DDC100F9A088 /* TopTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopTableViewCell.xib; sourceTree = "<group>"; };
@@ -65,7 +73,7 @@
 		9DD1E9E22618E50600F9A088 /* ProfileColorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileColorTableViewCell.swift; sourceTree = "<group>"; };
 		9DD1E9E62618E84F00F9A088 /* UITableViewCell+NibName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+NibName.swift"; sourceTree = "<group>"; };
 		E7761236261B3C8600B01466 /* PlanetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetViewController.swift; sourceTree = "<group>"; };
-		E776123F261B414A00B01466 /* PlanetListRespondsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetListRespondsModel.swift; sourceTree = "<group>"; };
+		E776123F261B414A00B01466 /* RespondsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespondsModel.swift; sourceTree = "<group>"; };
 		E7761244261B44D000B01466 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,6 +136,15 @@
 			path = Planet;
 			sourceTree = "<group>";
 		};
+		9DB02DCA262AF8FC00B73766 /* Character */ = {
+			isa = PBXGroup;
+			children = (
+				9DB02DCB262AF97A00B73766 /* CharacterViewController.swift */,
+				9DB02DD2262AF9BE00B73766 /* CharacterCollectionViewCell.swift */,
+			);
+			path = Character;
+			sourceTree = "<group>";
+		};
 		9DD1E9C32618DB5300F9A088 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				9DD1E9E62618E84F00F9A088 /* UITableViewCell+NibName.swift */,
+				9DB02DDE262B329800B73766 /* UICollectionViewCell+NibName.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -153,6 +171,7 @@
 		9DFD1816261E08750064B276 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9DB02DCA262AF8FC00B73766 /* Character */,
 				9D9AE575261CC13100DBFFC2 /* Planet */,
 				9DD1E9C32618DB5300F9A088 /* Profile */,
 				9D6B9A8F26175C4300C6E213 /* LoginViewController.swift */,
@@ -176,6 +195,7 @@
 			children = (
 				E776123E261B406D00B01466 /* DTO */,
 				9DCF17A3261F6E3E0054E8F5 /* Planet.swift */,
+				9DB02DC4262AF7FE00B73766 /* Character.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -183,7 +203,7 @@
 		E776123E261B406D00B01466 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				E776123F261B414A00B01466 /* PlanetListRespondsModel.swift */,
+				E776123F261B414A00B01466 /* RespondsModel.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -281,14 +301,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DB02DCC262AF97A00B73766 /* CharacterViewController.swift in Sources */,
 				9DD1E9E72618E84F00F9A088 /* UITableViewCell+NibName.swift in Sources */,
+				9DB02DD3262AF9BE00B73766 /* CharacterCollectionViewCell.swift in Sources */,
 				9DD1E9DC2618E3C400F9A088 /* UserInfoTableViewCell.swift in Sources */,
-				E7761240261B414A00B01466 /* PlanetListRespondsModel.swift in Sources */,
+				E7761240261B414A00B01466 /* RespondsModel.swift in Sources */,
 				9DD1E9D62618E20C00F9A088 /* StyledRoundedImage.swift in Sources */,
 				E7761245261B44D000B01466 /* NetworkService.swift in Sources */,
 				9D8BDDD72618268100AA3AD2 /* AuthorizationServerSimulator.swift in Sources */,
 				9DD1E9D22618DDE300F9A088 /* TopTableViewCell.swift in Sources */,
+				9DB02DC5262AF7FE00B73766 /* Character.swift in Sources */,
 				9D8BDDDB2618362B00AA3AD2 /* ApplicationConstans.swift in Sources */,
+				9DB02DDF262B329800B73766 /* UICollectionViewCell+NibName.swift in Sources */,
 				9D6B9A9026175C4300C6E213 /* LoginViewController.swift in Sources */,
 				E7761237261B3C8600B01466 /* PlanetViewController.swift in Sources */,
 				9D6B9A7F261759E100C6E213 /* RegistrationViewController.swift in Sources */,
